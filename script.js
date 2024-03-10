@@ -128,10 +128,17 @@ searchForm.keypress(function (event) {
   }
 });
 
-loadMore.on("click", (e) => {
+// loadMore.on("click", (e) => {
+//   page++;
+//   searchImg();
+// });
+
+loadMore.on('click',loadMoreImages)
+
+function loadMoreImages  (){
   page++;
   searchImg();
-});
+}
 
 searchImg();
 
@@ -178,5 +185,3 @@ toggleTopSectionReach();
 $(window).scroll(function () {
   toggleTopSectionReach();
 });
-
-

@@ -345,7 +345,7 @@ a {
 .below-img-cont button.heart-second{
   background: white;
   border: 1px solid rgba(128, 128, 128, 0.352) ;
-  padding: 2px 12px;
+  padding: 2px 12px 4px;
   border-radius: 4px;
   color: gray;
   transition: 500ms;
