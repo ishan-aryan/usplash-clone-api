@@ -81,6 +81,20 @@ async function searchImg() {
         }
       });
 
+      $(".heart").on("click",function () {
+        // Toggle class and styles
+        $(this).toggleClass("clik");
+        if ($(this).hasClass("clik")) {
+          $(this).find("i").css("color", "white");
+          $(this).css("background", "red");
+          $(this).css("border", "1px solid transparent");
+        } else {
+          $(this).find("i").css("color", "gray");
+          $(this).css("background", "white");
+          $(this).css("border", "1px solid rgba(128, 128, 128, 0.352)");
+        }
+      });
+
       const smallAboveSection = $(`
       <div class="creator-second">
   <img src="${result.user.profile_image.small}" alt="" class="creator-img-second">
