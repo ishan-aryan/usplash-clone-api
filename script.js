@@ -60,8 +60,10 @@ async function searchImg() {
             <i class="fa-solid fa-heart"></i> 
           </button>
           <button class="download-second">
-            <p>Download</p>
+          <a href="${result.links.download}" target="_blank"><p>Download</p>
             <i class="fa-solid fa-chevron-down"></i>
+          </a>
+            
           </button>
         </div>`
       );

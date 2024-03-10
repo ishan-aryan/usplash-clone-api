@@ -344,22 +344,31 @@ a {
 
 .below-img-cont button.heart-second{
   background: white;
-  border: 1px solid rgba(128, 128, 128, 0.452) ;
+  border: 1px solid rgba(128, 128, 128, 0.352) ;
   padding: 2px 12px;
   border-radius: 4px;
   color: gray;
 }
 
 .below-img-cont button.download-second{
+  border: none;
+  background: none;
+}
+
+.below-img-cont button.download-second a{
   background: white;
-  border: 1px solid rgba(128, 128, 128, 0.452);
+  border: 1px solid rgba(128, 128, 128, 0.352);
   border-radius: 4px;
-  padding: 0 10px;
+  padding: 0 10px 2px;
   color: gray;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+}
+
+.below-img-cont button.download-second a i{
+  opacity: 0.75;
 }
 
 .creator-second{
