@@ -348,6 +348,11 @@ a {
   padding: 2px 12px;
   border-radius: 4px;
   color: gray;
+  transition: 500ms;
+}
+
+.below-img-cont button.heart-second:hover{
+  border: 1px solid black;
 }
 
 .below-img-cont button.download-second{
