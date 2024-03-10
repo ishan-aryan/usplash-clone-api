@@ -13,7 +13,7 @@ async function searchImg() {
   let url = "";
   try {
     if (searchForm.val() === "") {
-      keyword = "random tv shows";
+      keyword = "flying animals";
       url = `https://api.unsplash.com/search/photos?page=${page}&query=${keyword}&client_id=${accessKey}&per_page=24`;
     } else {
       keyword = searchForm.val();
@@ -127,11 +127,6 @@ searchForm.keypress(function (event) {
     searchImg();
   }
 });
-
-// loadMore.on("click", (e) => {
-//   page++;
-//   searchImg();
-// });
 
 loadMore.on('click',loadMoreImages)
 

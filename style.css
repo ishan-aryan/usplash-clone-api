@@ -291,8 +291,8 @@ a {
 }
 
 .below-h1 p {
-  font-weight: 500;
-  font-size: 1.2rem;
+  font-weight: 400;
+  font-size: 1.15rem;
 }
 
 .below-h1 span {
@@ -415,7 +415,7 @@ a {
 
 @media (min-width: 992px) {
   .left-side-top {
-    min-height: 20rem;
+    min-height: 19rem;
   }
 }
 
