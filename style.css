@@ -435,7 +435,7 @@ a {
   }
 
   .below-h1 p br {
-    display: none;
+    /* display: none; */
   }
 
   .gray {
@@ -493,7 +493,7 @@ a {
   }
 
   .below-h1 p {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   .below-h1 span {
@@ -507,6 +507,10 @@ a {
   #search-results .container {
     margin: 0;
     max-width: 100%;
+  }
+
+  .top-section .container{
+    max-width: 95% !important;
   }
 
 }
