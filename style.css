@@ -32,7 +32,6 @@ header h1 {
   overflow: hidden;
   z-index: 9;
   border-radius: 10px;
-  /* transition: 200ms; */
 }
 
 .input-wrapper input {
@@ -81,6 +80,7 @@ header h1 {
 .show-more-btn {
   margin: 20px auto;
   display: block;
+  display: none;
 }
 
 #search-results {
@@ -260,7 +260,7 @@ a {
   display: flex;
   align-items: end;
   justify-content: start;
-  padding: 10px 25px 30px;
+  padding: 10px 10px 32px;
   font-size: 0.8rem;
   font-weight: 600;
 }
@@ -269,7 +269,7 @@ a {
   content: "Bradford City";
   position: absolute;
   inset: 0;
-  padding: 10px 25px;
+  padding: 10px 10px;
   font-size: 1rem;
   font-weight: 400;
   display: flex;
