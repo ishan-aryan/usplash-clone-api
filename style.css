@@ -91,7 +91,6 @@ header h1 {
 .gray .img-cont {
   width: 100%;
   overflow: hidden;
-  margin: 0 0 20px;
   position: relative;
 }
 
@@ -130,7 +129,6 @@ header h1 {
   justify-content: center;
   gap: 10px;
   align-items: center;
-  /* background: red; */
 }
 
 .creator img {
@@ -220,14 +218,6 @@ a {
 
 .img-cont:hover .heart {
   opacity: 1;
-}
-
-.img-cont:hover .heart.clicked {
-  background: red !important;
-}
-
-.img-cont:hover .heart.clicked i {
-  color: white !important;
 }
 
 .top-section {
@@ -343,6 +333,57 @@ a {
   font-size: 1.2rem;
 }
 
+.below-img-cont {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+  position: relative;
+  margin: 0 0 20px;
+  display: none;
+}
+
+.below-img-cont button.heart-second{
+  background: white;
+  border: 1px solid rgba(128, 128, 128, 0.452) ;
+  padding: 2px 12px;
+  border-radius: 4px;
+  color: gray;
+}
+
+.below-img-cont button.download-second{
+  background: white;
+  border: 1px solid rgba(128, 128, 128, 0.452);
+  border-radius: 4px;
+  padding: 0 10px;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.creator-second{
+  display: none !important;
+}
+
+.creator-img-second{
+  border-radius: 50%;
+}
+
+.creator-second{
+  display: flex;
+  padding: 10px;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+
+.creator-second p.creator-name-second{
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
 @media (max-width: 1200px) {
   header h1 p br {
     display: none;
@@ -388,11 +429,34 @@ a {
   }
 }
 
+@media (min-width: 767px){
+  .img-cont{
+    margin-bottom: 20px;
+  }
+}
+
 @media (max-width: 768px) {
-  .img-cont {
-    margin-bottom: 100px !important;
+
+  .below-img-cont{
+    display: flex ;
   }
 
+  .creator-second{
+    display: flex !important;
+  }
+
+  .creator,.heart{
+    display: none ;
+  }
+
+  a.downld{
+    display: none !important;
+  }
+
+  .img-cont::after{
+    display: none;
+  }
+  
   .top-section {
     padding: 0px;
   }
