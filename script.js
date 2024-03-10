@@ -13,7 +13,7 @@ async function searchImg() {
   let url = "";
   try {
     if (searchForm.val() === "") {
-      keyword = "s";
+      keyword = "random";
       url = `https://api.unsplash.com/search/photos?page=${page}&query=${keyword}&client_id=${accessKey}&per_page=24`;
     } else {
       keyword = searchForm.val();
@@ -178,3 +178,5 @@ toggleTopSectionReach();
 $(window).scroll(function () {
   toggleTopSectionReach();
 });
+
+

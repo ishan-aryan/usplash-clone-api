@@ -451,6 +451,10 @@ a {
 
 @media (max-width: 768px) {
 
+  .img-cont{
+    max-height: 680px;
+  }
+
   .below-img-cont{
     display: flex ;
   }
@@ -504,6 +508,7 @@ a {
     margin: 0;
     max-width: 100%;
   }
+
 }
 
 @media (max-width: 550px) {
