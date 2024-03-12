@@ -36,7 +36,7 @@ async function searchImg() {
       const imgContainer = $(`
         <div class="img-cont">
           <img src="${result.urls.small}" alt="${result.alt_description}" />
-          <a href="${result.links.download}" target="_blank" class="downld">
+          <a href="#" class="downld" download>
             <i class="fa-solid fa-arrow-down"></i>
           </a>
           <div class="creator">
@@ -60,13 +60,13 @@ async function searchImg() {
             <i class="fa-solid fa-heart"></i> 
           </button>
           <button class="download-second">
-          <a href="${result.links.download}" target="_blank"><p>Download</p>
+            <a href="${result.urls.small}" download><p>Download</p>
             <i class="fa-solid fa-chevron-down"></i>
-          </a>
-            
+            </a>
           </button>
         </div>`
       );
+
       $(".heart-second").on("click",function () {
         // Toggle class and styles
         $(this).toggleClass("clik");
@@ -96,10 +96,10 @@ async function searchImg() {
       });
 
       const smallAboveSection = $(`
-      <div class="creator-second">
-  <img src="${result.user.profile_image.small}" alt="" class="creator-img-second">
-  <p class="creator-name-second">${result.user.first_name}</p>
-</div>
+        <div class="creator-second">
+          <img src="${result.user.profile_image.small}" alt="" class="creator-img-second">
+          <p class="creator-name-second">${result.user.first_name}</p>
+        </div>
       `);
 
       searchResults.append(smallAboveSection);
@@ -128,14 +128,34 @@ searchForm.keypress(function (event) {
   }
 });
 
-loadMore.on('click',loadMoreImages)
+loadMore.on('click', loadMoreImages);
 
-function loadMoreImages  (){
+function loadMoreImages() {
   page++;
   searchImg();
 }
 
 searchImg();
+
+$(document).on("click", ".downld", function(e) {
+  e.preventDefault(); // Prevent default action (opening blank tab)
+
+  const imageUrl = $(this).closest(".img-cont").find("img").attr("src");
+  const fileName = "image.jpg"; // Set default file name or extract from URL
+
+  // Convert image to base64
+  fetch(imageUrl)
+    .then(response => response.blob())
+    .then(blob => {
+      const reader = new FileReader();
+      reader.readAsDataURL(blob);
+      reader.onloadend = function() {
+        const base64data = reader.result;
+        // Download the base64 data
+        downloadBase64Image(base64data, fileName);
+      }
+    });
+});
 
 $(".heart ").on("click", () => {
   $(".heart").addClass(".clicked");
@@ -191,3 +211,12 @@ window.addEventListener('scroll', function() {
     loadMoreImages();
   }
 });
+
+function downloadBase64Image(base64data, filename) {
+  const link = document.createElement('a');
+  link.href = base64data;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
