@@ -141,7 +141,27 @@ $(document).on("click", ".downld", function(e) {
   e.preventDefault(); // Prevent default action (opening blank tab)
 
   const imageUrl = $(this).closest(".img-cont").find("img").attr("src");
-  const fileName = "image.jpg"; // Set default file name or extract from URL
+  const fileName = $(this).attr("download"); // Set default file name or extract from URL
+
+  // Convert image to base64
+  fetch(imageUrl)
+    .then(response => response.blob())
+    .then(blob => {
+      const reader = new FileReader();
+      reader.readAsDataURL(blob);
+      reader.onloadend = function() {
+        const base64data = reader.result;
+        // Download the base64 data
+        downloadBase64Image(base64data, fileName);
+      }
+    });
+});
+
+$(document).on("click", ".download-second", function(e) {
+  e.preventDefault(); // Prevent default action (opening blank tab)
+
+  const imageUrl = $(this).closest(".img-cont").find("img").attr("src");
+  const fileName = $(this).attr("download"); // Set default file name or extract from URL
 
   // Convert image to base64
   fetch(imageUrl)
