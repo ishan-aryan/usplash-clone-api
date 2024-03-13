@@ -60,14 +60,14 @@ async function searchImg() {
             <i class="fa-solid fa-heart"></i> 
           </button>
           <button class="download-second">
-            <a href="${result.urls.small}" download><p>Download</p>
-            <i class="fa-solid fa-chevron-down"></i>
-            </a>
-          </button>
+          <a href="#" download="${result.id}.jpg"><p>Download</p>
+          <i class="fa-solid fa-chevron-down"></i>
+          </a>
+        </button>
         </div>`
       );
 
-      $(".heart-second").on("click",function () {
+      $(".heart-second").on("click", function () {
         // Toggle class and styles
         $(this).toggleClass("clik");
         if ($(this).hasClass("clik")) {
@@ -81,7 +81,7 @@ async function searchImg() {
         }
       });
 
-      $(".heart").on("click",function () {
+      $(".heart").on("click", function () {
         // Toggle class and styles
         $(this).toggleClass("clik");
         if ($(this).hasClass("clik")) {
@@ -128,7 +128,7 @@ searchForm.keypress(function (event) {
   }
 });
 
-loadMore.on('click', loadMoreImages);
+loadMore.on("click", loadMoreImages);
 
 function loadMoreImages() {
   page++;
@@ -137,7 +137,7 @@ function loadMoreImages() {
 
 searchImg();
 
-$(document).on("click", ".downld", function(e) {
+$(document).on("click", ".downld", function (e) {
   e.preventDefault(); // Prevent default action (opening blank tab)
 
   const imageUrl = $(this).closest(".img-cont").find("img").attr("src");
@@ -145,37 +145,39 @@ $(document).on("click", ".downld", function(e) {
 
   // Convert image to base64
   fetch(imageUrl)
-    .then(response => response.blob())
-    .then(blob => {
+    .then((response) => response.blob())
+    .then((blob) => {
       const reader = new FileReader();
       reader.readAsDataURL(blob);
-      reader.onloadend = function() {
+      reader.onloadend = function () {
         const base64data = reader.result;
         // Download the base64 data
         downloadBase64Image(base64data, fileName);
-      }
+      };
     });
 });
 
-$(document).on("click", ".download-second", function(e) {
+$(document).on("click", ".download-second", function (e) {
   e.preventDefault(); // Prevent default action (opening blank tab)
 
   const imageUrl = $(this).closest(".img-cont").find("img").attr("src");
-  const fileName = $(this).attr("download"); // Set default file name or extract from URL
+  const fileName = $(this).find("a").attr("download"); // Extract filename from the download attribute
 
   // Convert image to base64
   fetch(imageUrl)
-    .then(response => response.blob())
-    .then(blob => {
-      const reader = new FileReader();
-      reader.readAsDataURL(blob);
-      reader.onloadend = function() {
-        const base64data = reader.result;
-        // Download the base64 data
-        downloadBase64Image(base64data, fileName);
-      }
-    });
+  .then(response => response.blob())
+  .then(blob => {
+    const url = window.URL.createObjectURL(new Blob([blob])); // Create a temporary URL for the blob
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', fileName); // Set the download attribute
+    document.body.appendChild(link);
+    link.click(); // Trigger the click event to initiate the download
+    document.body.removeChild(link); // Clean up
+  });
+
 });
+
 
 $(".heart ").on("click", () => {
   $(".heart").addClass(".clicked");
@@ -221,9 +223,9 @@ $(window).scroll(function () {
   toggleTopSectionReach();
 });
 
-window.addEventListener('scroll', function() {
+window.addEventListener("scroll", function () {
   // Check if the end of search results is visible
-  var searchResults = document.getElementById('search-results');
+  var searchResults = document.getElementById("search-results");
   var rect = searchResults.getBoundingClientRect();
   if (rect.bottom <= window.innerHeight) {
     // If end of search results is visible, trigger the alert
@@ -233,7 +235,7 @@ window.addEventListener('scroll', function() {
 });
 
 function downloadBase64Image(base64data, filename) {
-  const link = document.createElement('a');
+  const link = document.createElement("a");
   link.href = base64data;
   link.download = filename;
   document.body.appendChild(link);
